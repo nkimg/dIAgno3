@@ -1,0 +1,12 @@
+# AI Agent Guidelines for dIAgno3
+
+Whenever you make successful code changes, modifications, or fixes in this repository, you MUST automatically version and push them to GitHub.
+
+## Git Workflow Rules for Agents
+
+1. **Check Status**: After making changes, check what files were modified using `git status`.
+2. **Stage Changes**: Add all modified files using `git add .` (respecting the existing `.gitignore`).
+3. **Commit**: Create a descriptive commit message based on the changes made (e.g. `git commit -m "fix: adjust styling in result layout"`).
+4. **Push**: Push the committed changes immediately to the remote repository using `git push`.
+
+*Note: The project is connected to Vercel via GitHub. Pushing changes will trigger an automatic deploy. Ensure all changes build and pass checks before pushing.*

@@ -1,6 +1,6 @@
 import type { PatientInfo, ChatMessage } from './storage';
 
-const API_KEY = 'AIzaSyBBw7TfDMuWZKAJS-Z1nbTkkPTkLQ9Omqo';
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
 const MODEL_NAME = 'gemma-4-31b-it';
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
 
@@ -162,17 +162,25 @@ export async function fetchGemmaOpinion(
   ].join('\n');
 
   const userContent = [
-    '--- INSTRUÇÕES DO SISTEMA ---',
-    systemInstruction,
-    '',
-    '--- DADOS DO CASO CLÍNICO ---',
+    `Você é o "Assistente Clínico dIAgno", especialista virtual em MTC. Elabore o parecer clínico em português do Brasil para o caso abaixo.`,
+    ``,
+    `Dados do paciente:`,
     patientDesc,
-    '',
-    'Sintomas marcados na anamnese:',
+    ``,
+    `Sintomas marcados na anamnese:`,
     symptomsList,
-    '',
-    'Hipóteses diagnósticas calculadas:',
+    ``,
+    `Hipóteses diagnósticas calculadas pela engine:`,
     hypothesesList,
+    ``,
+    `Diretrizes cruciais de resposta:`,
+    `- Idioma: Responda obrigatoriamente 100% em português do Brasil. Nunca responda em inglês ou traduza os dados para inglês.`,
+    `- Não repita os dados do paciente, os sintomas ou as hipóteses na sua resposta.`,
+    `- NÃO prescreva tratamentos, ervas ou acupontos.`,
+    `- NÃO forneça diagnósticos definitivos.`,
+    `- Comece a sua resposta diretamente escrevendo o título: "Opinião Clínica Inicial", seguido das seções "1. Direção do Diagnóstico" e "2. Aspectos para Investigação Complementar".`,
+    ``,
+    `Escreva o parecer clínico a seguir (iniciando com "Opinião Clínica Inicial"):`
   ].join('\n');
 
   try {
@@ -314,17 +322,33 @@ export async function fetchGemmaClinicalMarkdownOpinion(
   ].join('\n');
 
   const userContent = [
-    '--- INSTRUÇÕES DO SISTEMA ---',
-    systemInstruction,
-    '',
-    '--- DADOS DO CASO CLÍNICO ---',
+    `Você é o "Assistente Clínico dIAgno", especialista virtual de alto nível em MTC. Analise as informações do paciente abaixo para gerar um parecer complementar em português do Brasil.`,
+    ``,
+    `Dados do paciente:`,
     patientDesc,
-    '',
-    'Sintomas marcados na anamnese:',
+    ``,
+    `Sintomas marcados na anamnese:`,
     symptomsList,
-    '',
-    'Hipóteses diagnósticas calculadas:',
+    ``,
+    `Hipóteses diagnósticas calculadas pela engine:`,
     hypothesesList,
+    ``,
+    `Diretrizes obrigatórias de resposta:`,
+    `- Idioma: Escreva inteiramente em português do Brasil. Nunca responda em inglês ou traduza os sintomas para inglês.`,
+    `- Não repita ou liste os dados de entrada (paciente, queixa, sintomas, hipóteses) na sua resposta.`,
+    `- Indique a direção diagnóstica (Qi, Xue, Yin/Yang, canais).`,
+    `- Sugira o que investigar complementarmente (exame de língua, pulso, hábitos).`,
+    `- NÃO prescreva tratamentos, fórmulas ou pontos de acupuntura.`,
+    `- NÃO dê diagnósticos absolutos.`,
+    `- Comece a sua resposta diretamente com o cabeçalho Markdown abaixo (sem saudações ou preâmbulos):`,
+    ``,
+    `## Análise Clínica: ${patient.name}`,
+    `### Direção do Diagnóstico`,
+    `[sua análise clínica em português]`,
+    `### Investigação Complementar`,
+    `[suas sugestões de investigação em português]`,
+    ``,
+    `Gere o parecer clínico em português (iniciando com "## Análise Clínica: ${patient.name}"):`
   ].join('\n');
 
   try {

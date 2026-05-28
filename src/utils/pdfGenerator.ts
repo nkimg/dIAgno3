@@ -340,7 +340,7 @@ class PDFWriter {
   }
 
   drawAIOpinionSection(aiOpinion: string) {
-    this.writeSectionHeader("3. Anexo: Opinião Clínica da IA (powered By Google Gemma 4)");
+    this.writeSectionHeader("3. Anexo: Opinião Clínica da IA (powered by Google Gemini)");
 
     const lines = aiOpinion.split('\n');
     lines.forEach(line => {

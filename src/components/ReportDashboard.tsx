@@ -257,7 +257,7 @@ export default function ReportDashboard({
       {/* 7. Center: AI Opinion Section (Control Panel) */}
       <div className="chart-panel animate-in" style={{ padding: '24px 30px', marginBottom: 32 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-          <div className="chart-panel-title" style={{ margin: 0 }}>Opinião Clínica da IA (powered By Google Gemma 4)</div>
+          <div className="chart-panel-title" style={{ margin: 0 }}>Opinião Clínica da IA (powered by Google Gemini)</div>
           {aiOpinion && (
             <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, cursor: 'pointer', color: 'var(--text-secondary)' }}>
               <input
@@ -280,7 +280,7 @@ export default function ReportDashboard({
         {!aiOpinion && !isLoadingAi && (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 12 }}>
             <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>
-              Você pode solicitar uma análise clínica complementar gerada pelo modelo Gemma baseada nos sintomas e hipóteses de MTC deste paciente.
+              Você pode solicitar uma análise clínica complementar gerada pelo modelo Gemini baseada nos sintomas e hipóteses de MTC deste paciente.
             </p>
             <button className="btn btn-primary" onClick={handleRequestAi} style={{ minHeight: 36, padding: '8px 20px' }}>
               Solicitar Opinião da IA
@@ -369,7 +369,7 @@ export default function ReportDashboard({
             color: 'var(--text-muted)',
             marginBottom: 20
           }}>
-            Anexo: Opinião Clínica Complementar da IA (powered By Google Gemma 4)
+            Anexo: Opinião Clínica Complementar da IA (powered by Google Gemini)
           </div>
           <div className="ai-markdown-content" style={{ fontSize: 13.5, lineHeight: 1.7 }}>
             {parseMarkdownToReact(aiOpinion)}

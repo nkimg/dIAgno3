@@ -92,7 +92,7 @@ export default function PatientModal({ onStart, onShowHistory, onLoadMockCase }:
             </button>
           </div>
           
-          {onLoadMockCase && (
+          {/* {onLoadMockCase && (
             <button 
               type="button" 
               className="btn btn-secondary btn-full btn-lg" 
@@ -110,7 +110,7 @@ export default function PatientModal({ onStart, onShowHistory, onLoadMockCase }:
             >
               🧪 Testar com Caso Mock (Aleatório)
             </button>
-          )}
+          )} */}
           
           <div className="disclaimer" style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '16px', textAlign: 'center' }}>
             <p style={{ margin: '0 0 6px', fontSize: '12px', color: 'rgba(255, 255, 255, 0.75)', lineHeight: 1.4 }}>

@@ -360,7 +360,7 @@ export default function App() {
             </div>
 
             <div className="header-actions">
-              {/* 🧪 BOTÃO MOCK - REMOVER DEPOIS */}
+              {/* 🧪 BOTÃO MOCK - REMOVER DEPOIS
               <button 
                 className="btn btn-secondary btn-sm" 
                 onClick={handleLoadMockCase}
@@ -376,6 +376,7 @@ export default function App() {
               >
                 🧪 Caso Mock
               </button>
+              */}
 
               <button 
                 className="theme-toggle" 
